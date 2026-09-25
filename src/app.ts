@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { authMiddleware } from "./middleware/auth.js";
 
 const app = express();
@@ -11,7 +11,20 @@ app.get("/", (_req, res) => {
     });
 });
 
-app.get("/profile", authMiddleware, (req, res) => {
+interface User {
+    id: string;
+    name: string;
+    email: string;
+}
+
+interface CustomRequest extends Request {
+    user?: User;
+}
+interface CustomResponse extends Response {
+    user?: User;
+}
+
+app.get("/profile", authMiddleware, (req: CustomRequest, res: CustomResponse) => {
     if (!req.user) {
         return res.status(401).json({
             message: "Unauthorized",
