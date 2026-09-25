@@ -6,9 +6,9 @@ export const authMiddleware = (
     next: NextFunction
 ) => {
 
-    console.log("Middleware is being used")
+    console.log("Middleware run")
 
-    // TODO: Verify JWT/token here
+    // TODO: verify your JWT here
     const user: User = {
         id: "123",
         name: "John Doe",
