@@ -6,8 +6,15 @@ interface User {
     email: string;
 }
 
+interface CustomRequest extends Request {
+    user?: User;
+}
+interface CustomResponse extends Response {
+    user?: User;
+}
+
 export const authMiddleware = (
-    req: Request,
+    req: CustomRequest,
     res: Response,
     next: NextFunction
 ) => {
