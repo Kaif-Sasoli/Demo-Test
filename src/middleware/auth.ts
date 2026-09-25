@@ -1,5 +1,6 @@
 // src/middleware/auth.ts
 import { Request, Response, NextFunction } from "express";
+import "../types/request.type.js";
 
 export const authMiddleware = (
     req: Request,
