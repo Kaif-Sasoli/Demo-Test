@@ -1,5 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 
+interface User {
+    id: string;
+    name: string;
+    email: string;
+}
+
 export const authMiddleware = (
     req: Request,
     res: Response,
