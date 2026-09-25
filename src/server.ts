@@ -1,29 +1,7 @@
-import express, { Request, Response } from "express";
-import { authMiddleware } from "./middleware/auth.js";
+import app from "./app.js";
 
+const PORT = 8080;
 
-const app = express();
-
-app.use(express.json());
-
-app.get("/", (_req, res) => {
-    res.json({
-        message: "API running",
-    });
-});
-
-app.get("/profile", authMiddleware, (req, res) => {
-    if (!req.user) {
-        return res.status(401).json({
-            message: "Unauthorized",
-        });
-    }
-
-    res.json({
-        user: req.user,
-    });
-});
-
-app.listen(8080, () => {
-    console.log("Server running on port 8080..");
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });

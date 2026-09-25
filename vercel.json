@@ -1,21 +1,10 @@
 {
     "version": 2,
-    "buildCommand": "npm install --include=dev && npm run build",
-    "outputDirectory": "dist",
-    "builds": [
-        {
-            "src": "dist/server.js",
-            "use": "@vercel/node"
-        }
-    ],
+    "buildCommand": "npm run build",
     "routes": [
         {
             "src": "/(.*)",
             "dest": "/dist/server.js"
-        },
-        {
-            "src": "/public/(.*)",
-            "dest": "/public/$1"
         }
     ]
 }
